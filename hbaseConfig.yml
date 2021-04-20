@@ -1,0 +1,31 @@
+hbase.zookeeper.quorum=bigdata014231,bigdata014232
+kerberos.principal=dic_cuv@MYCDH
+hbase.master.kerberos.principal=hbase/_HOST@MYCDH
+hbase.regionserver.kerberos.principal=hbase/_HOST@MYCDH
+hbase.thrift.kerberos.principal=hbase/_HOST@MYCDH
+
+hbase.zookeeper.property.clientPort=2181
+
+hbase.rootdir=hbase
+zookeeper.znode.parent=/hbase
+# 这样我们就不需要交互式输入密码了
+keytab.file=KEYTAB_LOCATE
+
+hbase.security.authentication=kerberos
+hbase.rpc.engine=org.apache.hadoop.hbase.ipc.SecureRpcEngine
+hbase.security.authorization=true
+hadoop.security.authentication=kerberos
+# 重试次数，默认为14，可配置为3
+hbase.client.retries.number=3
+# zk的重试次数，可调整为3次
+zookeeper.recovery.retry=2
+# 重试的休眠时间，默认为1s，可减少，比如100ms
+hbase.client.pause=50
+#rpc的超时时间，默认60s，不建议修改，避免影响正常的业务
+hbase.rpc.timeout=5000
+#客户端发起一次数据操作直至得到响应之间总的超时时间,数据操作类型包括get、append、increment、delete、put等
+hbase.client.operation.timeout=3000
+#scan查询时每次与server交互的超时时间，默认为60s，可不调整。
+hbase.client.scanner.timeout.period=10000
+#zk重试的休眠时间，默认为1s，可减少，比如：200ms
+zookeeper.recovery.retry.intervalmill=50
